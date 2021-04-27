@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+  ~ Copyright (C) 2021, Ibnsina Pharma
+  ~ All rights reserved.
+  --><svg xmlns:aapt="http://schemas.android.com/aapt" xmlns:android="http://schemas.android.com/apk/res/android" height="23.543" width="23.543" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.543,18.168a5.373,5.373 0,0 1,-5.375 5.375H5.375A5.373,5.373 0,0 1,0 18.168V5.38A5.381,5.381 0,0 1,5.38 0h12.7a5.456,5.456 0,0 1,5.458 5.458Z">
+        <aapt:attr name="android:fillColor" xmlns:aapt="http://www.w3.org/2000/svg">
+            <gradient android:centerX="6.8979535" android:centerY="25.356215" android:gradientRadius="31.195404" android:type="radial">
+                <item android:color="#FFFFD87A" android:offset="0.097"/>
+                <item android:color="#FFFCCE78" android:offset="0.143"/>
+                <item android:color="#FFF5B471" android:offset="0.226"/>
+                <item android:color="#FFEB8D65" android:offset="0.338"/>
+                <item android:color="#FFE36058" android:offset="0.449"/>
+                <item android:color="#FFCD3694" android:offset="0.679"/>
+                <item android:color="#FF6668B0" android:offset="1"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path d="M15.042,3.246L8.498,3.246A5.257,5.257 0,0 0,3.242 8.502L3.242,15.046a5.25,5.25 0,0 0,5.256 5.251L15.042,20.297A5.249,5.249 0,0 0,20.292 15.046L20.292,8.502A5.244,5.244 0,0 0,15.042 3.246ZM18.656,14.415a4.243,4.243 0,0 1,-4.244 4.244L9.128,18.659a4.243,4.243 0,0 1,-4.244 -4.244L4.884,9.127a4.243,4.243 0,0 1,4.244 -4.244h5.288a4.246,4.246 0,0 1,4.244 4.244Z" fill="#fff"/>
+    <path d="M12.001,7.311a4.492,4.492 0,1 0,4.493 4.492A4.49,4.49 0,0 0,12.001 7.311ZM12.001,14.503a2.7,2.7 0,1 1,2.7 -2.7A2.7,2.7 0,0 1,12.001 14.503Z" fill="#fff"/>
+    <path d="M17.322,7.242a1.14,1.14 0,1 1,-1.14 -1.145A1.14,1.14 0,0 1,17.322 7.242Z" fill="#fff"/>
+</svg>

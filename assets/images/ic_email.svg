@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+  ~ Copyright (C) 2021, Ibnsina Pharma
+  ~ All rights reserved.
+  --><svg xmlns:android="http://schemas.android.com/apk/res/android" height="16" width="20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20,2a2.006,2.006 0,0 0,-2 -2L2,0A2.006,2.006 0,0 0,0 2L0,14a2.006,2.006 0,0 0,2 2L18,16a2.006,2.006 0,0 0,2 -2ZM18,2l-8,5L2,2ZM18,14L2,14L2,4l8,5 8,-5Z" fill="#aeafb1"/>
+</svg>

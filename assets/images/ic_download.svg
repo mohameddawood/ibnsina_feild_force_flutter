@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+  ~ Copyright (C) 2021, Ibnsina Pharma
+  ~ All rights reserved.
+  --><svg xmlns:android="http://schemas.android.com/apk/res/android" height="25.546" width="23.949" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.29,11.644a0.8,0.8 0,0 0,-0.726 -0.468L14.37,11.176L14.37,0.8a0.8,0.8 0,0 0,-0.8 -0.8h-3.193a0.8,0.8 0,0 0,-0.8 0.8L9.577,11.176L6.39,11.176a0.8,0.8 0,0 0,-0.6 1.324l5.588,6.386a0.8,0.8 0,0 0,1.2 0l5.588,-6.386A0.8,0.8 0,0 0,18.29 11.644Z" fill="#fff"/>
+    <path d="M20.756,17.563v4.79L3.193,22.353L3.193,17.563L0,17.563v6.386a1.6,1.6 0,0 0,1.6 1.6L22.353,25.549a1.6,1.6 0,0 0,1.6 -1.6L23.953,17.563Z" fill="#fff"/>
+</svg>

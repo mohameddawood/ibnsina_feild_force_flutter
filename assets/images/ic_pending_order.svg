@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:android="http://schemas.android.com/apk/res/android" height="39.804" width="43.095" xmlns="http://www.w3.org/2000/svg">
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M6.164,38.803L36.351,38.803L40.118,18.059L1,18.059Z" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="2"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M11.084,10.961a1.884,1.884 0,1 1,-2.563 -0.679,1.884 1.884,0 0,1 2.563,0.679Z" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="1"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M17.619,7.194a1.883,1.883 0,1 1,-2.575 -0.7A1.9,1.9 0,0 1,17.619 7.194Z" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="1"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M21.386,13.728a1.886,1.886 0,1 1,-2.575 -0.692,1.886 1.886,0 0,1 2.575,0.692Z" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="1"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M6.446,18.047 L2.601,11.474a1.922,1.922 0,0 1,0.7 -2.563l13.056,-7.534a1.9,1.9 0,0 1,2.563 0.692l6.407,11.07" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="2"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M39.426,8.168l-8.777,-3.421a1.9,1.9 0,0 1,-1.076 -2.46h0A1.9,1.9 0,0 1,32.02 1.225l8.777,3.421a1.9,1.9 0,0 1,1.076 2.447h0A1.9,1.9 0,0 1,39.426 8.168Z" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="2"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M37.607,18.047l1.589,-4.075a1.948,1.948 0,0 0,0 -1.448l-0.436,-1a1.948,1.948 0,0 1,0 -1.448l0.756,-1.909L30.723,4.747l-0.756,1.9a1.845,1.845 0,0 1,-1 1.063l-1,0.423a1.909,1.909 0,0 0,-0.987 1.038L23.423,18.047" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="2"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M32.302,13.472L30.931,16.983" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="1"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M29.855,14.549L33.366,15.92" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="1"/>
+  <path android:strokeLineCap="round" android:strokeLineJoin="round" d="M39.298,13.178L27.356,8.514" fill="#000000" fill-opacity="0.0" stroke="#4e5fab" stroke-width="2"/>
+</svg>
