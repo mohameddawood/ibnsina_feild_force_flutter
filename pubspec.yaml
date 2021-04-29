@@ -27,6 +27,11 @@ dependencies:
   rxdart: ^0.26.0
   provider: ^5.0.0
   adaptive_dialog: ^0.10.0+5
+  lottie: ^1.0.1
+  shared_preferences: ^2.0.5
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

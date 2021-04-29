@@ -17,6 +17,8 @@ class LoginService {
    login() async{
     final dio = Dio(BaseOptions(headers: headers)); // Provide a dio instance
     final client = RestClient(dio);
+    logger.i("Login request is ${this.loginRequest.username}");
+    logger.i("Login request is ${this.loginRequest.password}");
     await client.login(loginRequest).then((it) {
       if (it != null) {
         if (it.user != null) {

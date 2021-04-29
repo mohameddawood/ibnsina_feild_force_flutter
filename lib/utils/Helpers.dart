@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lottie/lottie.dart';
 
 void moveTo(BuildContext context, Widget rout) {
   Navigator.push(
@@ -17,36 +18,39 @@ void moveToWithReplace(BuildContext context, Widget rout) {
   );
 }
 
-void showMessage(String message){
+void showMessage(String message) {
   Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
+      // gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
       backgroundColor: Colors.red,
       textColor: Colors.white,
-      fontSize: 16.0
-  );
+      fontSize: 16.0);
 }
-showProgressDialog(BuildContext context){
+
+showProgressDialog(BuildContext context) {
   showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (BuildContext context) {
-            return Center(child: CircularProgressIndicator());
-          });
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Center(child: CircularProgressIndicator());
+      });
 }
-Future<void> showMyDialog(BuildContext context,String alertTitle,String message) async {
+
+Future<void> showMyDialog(
+    BuildContext context, String alertTitle, String message) async {
   return showDialog<void>(
     context: context,
-    barrierDismissible: false, // user must tap button!
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text(alertTitle),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text(message),
+              Lottie.asset('assets/images/error.json',
+                  width: 150, height: 150, repeat: false),
+              Center(child: Text(message)),
             ],
           ),
         ),
@@ -62,3 +66,12 @@ Future<void> showMyDialog(BuildContext context,String alertTitle,String message)
     },
   );
 }
+
+String isInputTextNotValid(String value, String message) {
+  if (value == null || value.isEmpty) {
+    return message;
+  }
+  return null;
+}
+
+

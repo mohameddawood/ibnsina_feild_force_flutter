@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ibnsina_pharma_supplier/login/LoginPage.dart';
-import 'package:ibnsina_pharma_supplier/login/LoginViewModel.dart';
+import 'package:ibnsina_pharma_supplier/ui/login/LoginPage.dart';
+import 'package:ibnsina_pharma_supplier/ui/login/LoginViewModel.dart';
 import 'package:ibnsina_pharma_supplier/utils/Helpers.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
