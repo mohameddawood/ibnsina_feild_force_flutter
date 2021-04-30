@@ -11,6 +11,7 @@ import 'package:ibnsina_pharma_supplier/utils/constants_values.dart';
 import 'package:ibnsina_pharma_supplier/utils/padding_helper.dart';
 import 'package:ibnsina_pharma_supplier/utils/shared_pref_helper.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,10 +20,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   User user;
+  AppLocalizations data;
 
   @override
   Widget build(BuildContext context) {
+    data = AppLocalizations.of(context);
     return Scaffold(
+      backgroundColor: colorPrimaryDark,
       drawer: Drawer(
         child: Column(
           children: [drawerHeader(), drawerItems()],
@@ -31,6 +35,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: colorPrimaryDark),
         backgroundColor: Colors.white,
+        actions: [
+          SvgPicture.asset("assets/images/ic_profile.svg"),
+          getPaddingStart(),
+        ],
         title: Row(
           children: [
             SvgPicture.asset(
@@ -46,10 +54,288 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(
+                  child: SvgPicture.asset(
+                "assets/images/ic_nav_home.svg",
+                width: 20,
+                height: 20,
+              )),
+              Expanded(
+                  child: SvgPicture.asset(
+                "assets/images/ic_nav_home.svg",
+                width: 20,
+                height: 20,
+              )),
+            ],
+          ),
+        ),
+      ),
       body: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Column(
-          children: [],
+        home: Stack(children: [
+          getOvalShapeBackground(),
+          getHomePageMessageAlert(),
+          getHomeStatistics(),
+          getHomeActionsCard(),
+        ]),
+      ),
+    );
+  }
+
+  Column getHomeStatistics() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            getPaddingStart(val: 8.0),
+            Expanded(
+                child: Material(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  getPaddingTop(val: 5.0),
+                  SvgPicture.asset(
+                    "assets/images/ic_consumed.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  getPaddingTop(val: 4.0),
+                  Text("20"),
+                  Text(data.confirmed),
+                  getPaddingBottom(val: 5.0),
+                ],
+              ),
+            )),
+            getPaddingStart(),
+            Expanded(
+                //makes the red row full width
+                child: Material(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  getPaddingTop(val: 5.0),
+                  SvgPicture.asset(
+                    "assets/images/ic_users.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  getPaddingTop(val: 4.0),
+                  Text("20"),
+                  Text(data.bd_customers_list),
+                  getPaddingTop(val: 4.0),
+                  getPaddingBottom(val: 5.0),
+                ],
+              ),
+            )),
+            getPaddingStart(),
+            Expanded(
+                //makes the red row full width
+                child: Material(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  getPaddingTop(val: 5.0),
+                  SvgPicture.asset(
+                    "assets/images/ic_credit_limit.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+
+                  getPaddingTop(val: 4.0),
+                  Text("20"),
+                  Text(data.pending),
+                  getPaddingTop(val: 4.0),
+                  getPaddingBottom(val: 5.0),
+                ],
+              ),
+            )),
+            getPaddingStart(),
+            Expanded(
+                //makes the red row full width
+                child: Material(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  getPaddingTop(val: 5.0),
+                  SvgPicture.asset(
+                    "assets/images/ic_balance.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  getPaddingTop(val: 4.0),
+                  Text("20"),
+                  Text(data.accepted_orders),
+                  getPaddingTop(val: 4.0),
+                  getPaddingBottom(val: 5.0),
+                ],
+              ),
+            )),
+            getPaddingStart(val: 8.0)
+          ],
+        ),
+      ],
+    );
+  }
+
+  Column getHomeActionsCard() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          color: Colors.transparent,
+          height: 200,
+          width: double.infinity,
+          child: Material(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(50),
+                    topLeft: Radius.circular(50))),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  child: Material(
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/ic_online_ordering.svg",
+                          width: 50,
+                          height: 50,
+                        ),
+                        Text(data.customer_orders)
+                      ],
+                    ),
+                  ),
+                ),
+                getPadding(val: 15.0),
+                Container(
+                  height: 100,
+                  width: 100,
+                  child: Material(
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/ic_shopping.svg",
+                          width: 50,
+                          height: 50,
+                        ),
+                        Text(data.list_of_orders)
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column getHomePageMessageAlert() {
+    return Column(
+      children: [
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
+              child: Material(
+                elevation: 5,
+                color: pink,
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.only(
+                        topLeft: Radius.circular(8),
+                        topRight: Radius.circular(8))),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/images/ic_notification_important.svg",
+                        width: 20,
+                        height: 20,
+                        color: Colors.white,
+                      ),
+                      getPaddingStart(),
+                      Text(
+                        data.beta_version,
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Material(
+                elevation: 5,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.only(
+                        bottomLeft: Radius.circular(8),
+                        bottomRight: Radius.circular(8))),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        data.beta_welcome_msg,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  FractionallySizedBox getOvalShapeBackground() {
+    return FractionallySizedBox(
+      alignment: Alignment.center,
+      heightFactor: .4,
+      child: Material(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(120.0),
+                bottomRight: Radius.circular(120.0))),
+        child: Container(
+          height: 50,
+          width: double.infinity,
         ),
       ),
     );
