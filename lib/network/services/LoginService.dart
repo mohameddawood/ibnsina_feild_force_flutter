@@ -1,4 +1,4 @@
-import 'package:ibnsina_pharma_supplier/network/api/user/HttpUrls.dart';
+import 'package:ibnsina_pharma_supplier/network/api/HttpUrls.dart';
 import 'package:ibnsina_pharma_supplier/network/api/user/RestClient.dart';
 import 'package:ibnsina_pharma_supplier/network/models/handle_errors.dart';
 import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_request.dart';

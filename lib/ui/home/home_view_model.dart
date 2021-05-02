@@ -12,8 +12,10 @@ class HomeViewModel with ChangeNotifier {
 
   Future getUserData() async {
     String str = await getStringKey(USER_PROFILE_DATA) ?? "";
-    userStream.add(User.fromJson(jsonDecode(str)));
+    // userStream.add(User.fromJson(jsonDecode(str)));
+    return User.fromJson(jsonDecode(str));
   }
+
   @override
   void dispose() {
     userStream.close();

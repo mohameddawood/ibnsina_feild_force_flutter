@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ibnsina_pharma_supplier/network/api/user/HttpUrls.dart';
+import 'package:ibnsina_pharma_supplier/network/api/HttpUrls.dart';
 import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_response.dart';
 import 'package:ibnsina_pharma_supplier/ui/home/home_page.dart';
 import 'package:ibnsina_pharma_supplier/ui/home/home_view_model.dart';

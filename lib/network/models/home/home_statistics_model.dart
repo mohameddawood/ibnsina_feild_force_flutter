@@ -1,3 +1,7 @@
+import 'package:ibnsina_pharma_supplier/network/api/base_response.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+@JsonSerializable()
 class HomeStatisticsModel {
   String _confirmedTotalAmount;
   int _customerCount;

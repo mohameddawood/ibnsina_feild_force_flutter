@@ -2,7 +2,6 @@ import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_r
 import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_response.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
-import 'HttpUrls.dart';
 
 part 'RestClient.g.dart';
 

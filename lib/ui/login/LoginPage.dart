@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ibnsina_pharma_supplier/ui/home/home_page.dart';
 import 'package:ibnsina_pharma_supplier/ui/login/LoginViewModel.dart';
-import 'package:ibnsina_pharma_supplier/network/api/user/HttpUrls.dart';
+import 'package:ibnsina_pharma_supplier/network/api/HttpUrls.dart';
 import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_request.dart';
 import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_response.dart';
 import 'package:ibnsina_pharma_supplier/utils/Helpers.dart';

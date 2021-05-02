@@ -29,7 +29,9 @@ dependencies:
   adaptive_dialog: ^0.10.0+5
   lottie: ^1.0.1
   shared_preferences: ^2.0.5
-
+  built_value: any
+  build_runner: any
+  flutter_spinkit: ^5.0.0
 
 
 dev_dependencies:

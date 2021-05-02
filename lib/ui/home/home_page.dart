@@ -2,16 +2,22 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ibnsina_pharma_supplier/network/api/user/HttpUrls.dart';
+import 'package:ibnsina_pharma_supplier/network/api/HttpUrls.dart';
+import 'package:ibnsina_pharma_supplier/network/api/base_response.dart';
+import 'package:ibnsina_pharma_supplier/network/models/home/home.dart';
 import 'package:ibnsina_pharma_supplier/network/models/profile/sales_rep_login_response.dart';
-import 'package:ibnsina_pharma_supplier/ui/home/home_view_model.dart';
+import 'package:ibnsina_pharma_supplier/network/services/HomeService.dart';
+import 'package:ibnsina_pharma_supplier/ui/home/home_app_bar.dart';
+import 'package:ibnsina_pharma_supplier/utils/Helpers.dart';
 import 'package:ibnsina_pharma_supplier/utils/colors.dart';
 import 'package:ibnsina_pharma_supplier/utils/constants_values.dart';
 import 'package:ibnsina_pharma_supplier/utils/padding_helper.dart';
 import 'package:ibnsina_pharma_supplier/utils/shared_pref_helper.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'home_statistics.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,10 +27,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   User user;
   AppLocalizations data;
+  Home homeResponse;
+  HomeService service;
+
+  @override
+  void initState() {
+    service = HomeService();
+    user = User();
+    homeResponse = Home();
+    getServerStatistics();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     data = AppLocalizations.of(context);
+
     return Scaffold(
       backgroundColor: colorPrimaryDark,
       drawer: Drawer(
@@ -32,57 +50,27 @@ class _HomePageState extends State<HomePage> {
           children: [drawerHeader(), drawerItems()],
         ),
       ),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: colorPrimaryDark),
-        backgroundColor: Colors.white,
-        actions: [
-          SvgPicture.asset("assets/images/ic_profile.svg"),
-          getPaddingStart(),
-        ],
-        title: Row(
-          children: [
-            SvgPicture.asset(
-              "assets/images/ic_doctor.svg",
-              width: 30,
-              height: 20,
-            ),
-            Padding(padding: EdgeInsets.all(4)),
-            Text(
-              "${user?.supplierShortName ?? "-"}",
-              style: TextStyle(color: colorPrimaryDark),
-            )
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            children: [
-              Expanded(
-                  child: SvgPicture.asset(
-                "assets/images/ic_nav_home.svg",
-                width: 20,
-                height: 20,
-              )),
-              Expanded(
-                  child: SvgPicture.asset(
-                "assets/images/ic_nav_home.svg",
-                width: 20,
-                height: 20,
-              )),
-            ],
-          ),
-        ),
-      ),
+      appBar: HomeAppBar(user?.supplierShortName).build(context),
+      bottomNavigationBar: HomeBottomBar().build(context),
       body: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Stack(children: [
-          getOvalShapeBackground(),
-          getHomePageMessageAlert(),
-          getHomeStatistics(),
-          getHomeActionsCard(),
-        ]),
+        home: FutureBuilder(
+          future: service.getHomeStatistics(),
+          builder: (c, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              var h = snapshot.data as Home;
+              //  if (snapshot.hasData)
+              return Stack(children: [
+                getOvalShapeBackground(),
+                getHomePageMessageAlert(),
+                HomeStatistics(data,homeResponse).build(context),
+                getHomeActionsCard(),
+              ]);
+              //  else
+
+            } else return showProgressLoading();
+          },
+        ),
       ),
     );
   }
@@ -99,6 +87,7 @@ class _HomePageState extends State<HomePage> {
             getPaddingStart(val: 8.0),
             Expanded(
                 child: Material(
+              elevation: 8,
               color: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -111,8 +100,11 @@ class _HomePageState extends State<HomePage> {
                     width: 30,
                   ),
                   getPaddingTop(val: 4.0),
-                  Text("20"),
+                  Text(
+                    "${homeResponse.data?.acceptedTotalAmount ?? ''}${data.egp}",
+                  ),
                   Text(data.confirmed),
+                  getPaddingTop(val: 4.0),
                   getPaddingBottom(val: 5.0),
                 ],
               ),
@@ -122,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                 //makes the red row full width
                 child: Material(
               color: Colors.white,
+              elevation: 8,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               child: Column(
@@ -133,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                     width: 30,
                   ),
                   getPaddingTop(val: 4.0),
-                  Text("20"),
+                  Text("${homeResponse.data?.customerCount ?? 0}"),
                   Text(data.bd_customers_list),
                   getPaddingTop(val: 4.0),
                   getPaddingBottom(val: 5.0),
@@ -144,6 +137,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
                 //makes the red row full width
                 child: Material(
+              elevation: 8,
               color: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -155,9 +149,10 @@ class _HomePageState extends State<HomePage> {
                     height: 30,
                     width: 30,
                   ),
-
                   getPaddingTop(val: 4.0),
-                  Text("20"),
+                  Text(
+                    "${homeResponse.data?.pendingTotalAmount ?? ''}${data.egp}",
+                  ),
                   Text(data.pending),
                   getPaddingTop(val: 4.0),
                   getPaddingBottom(val: 5.0),
@@ -168,6 +163,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
                 //makes the red row full width
                 child: Material(
+              elevation: 8,
               color: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -180,7 +176,9 @@ class _HomePageState extends State<HomePage> {
                     width: 30,
                   ),
                   getPaddingTop(val: 4.0),
-                  Text("20"),
+                  Text(
+                    "${homeResponse.data?.confirmedTotalAmount ?? ''}${data.egp}",
+                  ),
                   Text(data.accepted_orders),
                   getPaddingTop(val: 4.0),
                   getPaddingBottom(val: 5.0),
@@ -341,15 +339,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  getData() async {
-    await Provider.of<HomeViewModel>(context, listen: false).getUserData();
-    context.read<HomeViewModel>().userStream.stream.listen((i) {
-      user = i;
-    });
+  Future<User> getData() async {
+    String str = await getStringKey(USER_PROFILE_DATA) ?? "";
+    user  = User.fromJson(jsonDecode(str));
+    return User.fromJson(jsonDecode(str));
   }
 
   Widget drawerHeader() {
-    getData();
     return Container(
       width: double.infinity,
       color: colorPrimaryDark,
@@ -362,10 +358,18 @@ class _HomePageState extends State<HomePage> {
             height: 70,
           ),
           Padding(padding: EdgeInsets.only(top: 10)),
-          Text(
-            "Welcome ${user?.supplierName ?? ''}",
-            style: TextStyle(color: Colors.white),
-          ),
+          FutureBuilder(
+              future: getData(),
+              builder: (_, snp) {
+                if (snp.hasData) {
+                  var u = snp.data as User;
+                  return Text(
+                    "Welcome ${u?.supplierName ?? ''}",
+                    style: TextStyle(color: Colors.white),
+                  );
+                } else
+                  return Text("data");
+              }),
           Padding(padding: EdgeInsets.only(top: 10)),
         ],
       ),
@@ -503,4 +507,24 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       );
+
+  Future<Home> getServerStatistics() async {
+    service.homeStream.listen((event) {
+      switch (event.status) {
+        case Status.LOADING:
+          {
+            return Future.value(Home());
+          }
+        case Status.COMPLETED:
+          {
+            logger.i(event.data.toJson().toString());
+            homeResponse = event.data;
+            return Future.value(event.data);
+          }
+
+        case Status.ERROR:
+          return Future.value(Home());
+      }
+    });
+  }
 }
