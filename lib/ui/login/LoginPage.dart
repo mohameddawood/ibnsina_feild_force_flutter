@@ -87,11 +87,11 @@ class _LoginPageState extends State<LoginPage> {
           elevation: 5,
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
-          child: TextField(
-            // validator: (value) {
-            //   userNameController.text = value;
-            //   return isInputTextNotValid(value, error);
-            // },
+          child: TextFormField(
+            validator: (value) {
+              userNameController.text = value;
+              return isInputTextNotValid(value, error);
+            },
             controller: userNameController,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
@@ -113,11 +113,11 @@ class _LoginPageState extends State<LoginPage> {
           elevation: 5,
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
-          child: TextField(
-            // validator: (value) {
-            //   passwordController.text = value;
-            //   return isInputTextNotValid(value, error);
-            // },
+          child: TextFormField(
+            validator: (value) {
+              passwordController.text = value;
+              return isInputTextNotValid(value, error);
+            },
             controller: passwordController,
             obscureText: !_passwordVisible,
             keyboardType: TextInputType.visiblePassword,
@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           onPressed: () async {
-            //if (_formKey.currentState.validate()) {
+            if (_formKey.currentState.validate()) {
               showProgressDialog(context);
               await Provider.of<LoginViewModel>(context, listen: false)
                   .loginUser(SalesRepLoginRequest(
@@ -167,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                   password: passwordController.text,
               ));
               loginEvents();
-           // }
+           }
           },
           child: Text(btnText,
               textAlign: TextAlign.center,

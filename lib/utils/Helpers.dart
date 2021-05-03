@@ -10,6 +10,15 @@ void moveTo(BuildContext context, Widget rout) {
   );
 }
 
+void moveToWithStack(BuildContext context, Widget rout) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) {
+      return rout;
+    }),
+  );
+}
+
 void moveToWithReplace(BuildContext context, Widget rout) {
   Navigator.pushReplacement(
     context,

@@ -39,7 +39,7 @@ class HomeStatistics extends StatelessWidget {
                       Text(
                         "${homeResponse.data?.acceptedTotalAmount ?? ''}${data.egp}",
                       ),
-                      Text(data.confirmed),
+                      Text(data.amount_order),
                       getPaddingTop(val: 4.0),
                       getPaddingBottom(val: 5.0),
                     ],

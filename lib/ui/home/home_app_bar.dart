@@ -12,9 +12,8 @@ import 'package:ibnsina_pharma_supplier/utils/shared_pref_helper.dart';
 
 class HomeAppBar extends StatelessWidget {
 
-  String supplierName;
   User user;
-  HomeAppBar(this.supplierName);
+  HomeAppBar();
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -36,7 +35,7 @@ class HomeAppBar extends StatelessWidget {
               future: getData(),
               builder: (_,snp){
             return Text(
-                "${user.supplierShortName ?? "-"}",
+                "${user?.supplierShortName ?? "-"}",
                 style: TextStyle(color: colorPrimaryDark));
           }
           )
